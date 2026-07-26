@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "lessons"
+    label: "Уроки"
+    files:
+      - file: "content/lessons.json"
+        label: "Список уроків"
+        name: "lessons"
+        fields:
+          - label: "Уроки"
+            name: "lessons"
+            widget: "list"
+            label_singular: "Урок"
+            summary: "{{title}}"
+            fields:
+              - {label: "Назва уроку", name: "title", widget: "string"}
+              - {label: "Аят / тема (необов'язково)", name: "description", widget: "text", required: false}
+              - {label: "Дата", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false}
+              - {label: "Аудіо (mp3, до 30 хв)", name: "audio", widget: "file"}
+              - {label: "PDF з тафсіром", name: "pdf", widget: "file"}

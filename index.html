@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Уроки Корану — аудіо та тафсір</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__arch" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <p class="eyebrow">Дзвінок для серця</p>
+    <h1>Уроки Корану</h1>
+    <p class="hero__sub">Слухай аудіо-уроки вчителя в своєму темпі — сповільнюй, перемотуй назад,
+      повертайся стільки разів, скільки потрібно. Під кожним записом — тафсір у PDF для читання.</p>
+  </div>
+  <div class="pattern-strip" aria-hidden="true"></div>
+</header>
+
+<main class="wrap">
+  <section id="lessons" class="lessons">
+    <div id="lessons-list" class="lessons__list">
+      <!-- lessons injected by script.js -->
+    </div>
+    <div id="empty-state" class="empty-state" hidden>
+      <p class="empty-state__title">Уроків поки немає</p>
+      <p class="empty-state__body">Перший запис з'явиться тут одразу після того, як вчитель додасть його в
+        <a href="/admin/">панелі уроків</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Записано для тих, хто хоче слухати уважно.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
