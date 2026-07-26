@@ -1,10 +1,28 @@
 {
   "lessons": [
     {
-      "pdf": "/uploads/32.-ас-саджда.pdf",
+      "surah": "асСаджда",
+      "title": "Аяти 1-5",
+      "description": "Вивчення сури асСаджда. Аяти 1-5",
+      "date": "",
       "audio": "/uploads/ассаджда-1-5-аят.mp3",
-      "description": "Вивчення сури асСаджа. Аяти 1-5",
-      "title": "асСаджа аяти 1-5"
+      "pdf": "/uploads/32.-ас-саджда.pdf"
+    },
+    {
+      "surah": "асСаджда",
+      "title": "Аяти 11-14",
+      "description": "",
+      "date": "",
+      "audio": "/uploads/ассаджда-11-14-аят.mp3",
+      "pdf": "/uploads/32.-ас-саджда.pdf"
+    },
+    {
+      "surah": "альМутаффіфін",
+      "title": "Аяти 1-6",
+      "description": "",
+      "date": "",
+      "audio": "/uploads/альмутаффіфін-1-6-аят.mp3",
+      "pdf": "/uploads/83.-аль-мутаффіфін.pdf"
     }
   ]
 }
