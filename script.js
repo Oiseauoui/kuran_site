@@ -13,7 +13,8 @@ async function loadLessons() {
   }
 
   const lessons = (data.lessons || []).slice().sort((a, b) => {
-    return new Date(b.date || 0) - new Date(a.date || 0);
+    // Sort by date within each surah (newest last = chronological order)
+    return new Date(a.date || 0) - new Date(b.date || 0);
   });
 
   if (lessons.length === 0) {
@@ -21,20 +22,57 @@ async function loadLessons() {
     return;
   }
 
-  lessons.forEach((lesson, i) => list.appendChild(renderLesson(lesson, i)));
+  // Group by surah, preserving first-appearance order of surahs
+  const surahMap = new Map();
+  lessons.forEach(lesson => {
+    const key = lesson.surah || "Без сури";
+    if (!surahMap.has(key)) surahMap.set(key, []);
+    surahMap.get(key).push(lesson);
+  });
+
+  surahMap.forEach((surahLessons, surahName) => {
+    list.appendChild(renderSurahGroup(surahName, surahLessons));
+  });
+}
+
+function renderSurahGroup(surahName, lessons) {
+  const section = document.createElement("section");
+  section.className = "surah-group";
+
+  const header = document.createElement("div");
+  header.className = "surah-header";
+  header.innerHTML = `
+    <span class="surah-header__icon" aria-hidden="true">📖</span>
+    <h2 class="surah-header__title">${escapeHtml(surahName)}</h2>
+    <span class="surah-header__count">${lessons.length} ${lessonWord(lessons.length)}</span>
+  `;
+  section.appendChild(header);
+
+  const lessonList = document.createElement("div");
+  lessonList.className = "lessons__list";
+  lessons.forEach((lesson, i) => lessonList.appendChild(renderLesson(lesson, i)));
+  section.appendChild(lessonList);
+
+  return section;
+}
+
+function lessonWord(n) {
+  if (n === 1) return "урок";
+  if (n >= 2 && n <= 4) return "уроки";
+  return "уроків";
 }
 
 function renderLesson(lesson, index) {
   const card = document.createElement("article");
   card.className = "lesson";
-  card.dataset.open = index === 0 ? "true" : "false";
+  card.dataset.open = "false";
 
   const dateLabel = lesson.date
     ? new Date(lesson.date).toLocaleDateString("uk-UA", { day: "2-digit", month: "long", year: "numeric" })
     : "";
 
   card.innerHTML = `
-    <button class="lesson__head" type="button" aria-expanded="${card.dataset.open}">
+    <button class="lesson__head" type="button" aria-expanded="false">
       <span class="lesson__title-wrap">
         <p class="lesson__title">${escapeHtml(lesson.title || "Урок")}</p>
         <p class="lesson__meta">${dateLabel}</p>

@@ -17,10 +17,11 @@ collections:
             name: "lessons"
             widget: "list"
             label_singular: "Урок"
-            summary: "{{title}}"
+            summary: "{{surah}} — {{title}}"
             fields:
-              - {label: "Назва уроку", name: "title", widget: "string"}
-              - {label: "Аят / тема (необов'язково)", name: "description", widget: "text", required: false}
+              - {label: "Сура (наприклад: асСаджда, аль-Мульк)", name: "surah", widget: "string"}
+              - {label: "Аяти (наприклад: Аяти 1-5)", name: "title", widget: "string"}
+              - {label: "Опис / нотатка (необов'язково)", name: "description", widget: "text", required: false}
               - {label: "Дата", name: "date", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false}
               - {label: "Аудіо (mp3, до 30 хв)", name: "audio", widget: "file"}
               - {label: "PDF з тафсіром", name: "pdf", widget: "file"}
